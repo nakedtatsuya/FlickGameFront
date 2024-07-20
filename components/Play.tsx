@@ -52,7 +52,6 @@ const Play = ({ data }: PlayProps) => {
     <main>
       <h1>Play画面</h1>
       <GameUI
-        loading={loading}
         currentIndex={currentIndex}
         userInput={userInput}
         isCorrect={isCorrect}
