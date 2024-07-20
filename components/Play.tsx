@@ -5,16 +5,17 @@ import NavigateButton from "@/components/NavigateButton";
 import { WordList } from "@/models/word";
 
 import FlickKeyboard from "@/components/flick/FlickKeyboard";
+import GameUI from "@/components/ui/gameUI";
 
 type PlayProps = {
   data: WordList;
 };
 
 const Play = ({ data }: PlayProps) => {
-  const [isFinished, setIsFinished] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
 
   const currentWord = data.words[currentIndex];
 
@@ -50,6 +51,13 @@ const Play = ({ data }: PlayProps) => {
   return (
     <main>
       <h1>Play画面</h1>
+      <GameUI
+        loading={loading}
+        currentIndex={currentIndex}
+        userInput={userInput}
+        isCorrect={isCorrect}
+        isFinished={isFinished}
+      />
       <p>{currentWord.word.content}</p>
       <p className="h-8">{userInput}</p>
       {isFinished ? <NavigateButton to="result" label="結果画面へ" /> : <></>}
